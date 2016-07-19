@@ -37,15 +37,16 @@
 		</div>
 		<script>
 		function loadDoc() {
-		  var xhttp = new XMLHttpRequest();
-		  xhttp.onreadystatechange = function() {
-		    if (xhttp.readyState == 4 && xhttp.status == 200) {
-		      document.getElementById("demo").innerHTML = xhttp.responseText;
-		    }
-		  };
-		  xhttp.open("GET", "https://therrodriguez.github.io/databasingcode/source.src", true);
-		  xhttp.send();
+			var xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = function() {
+				if (xhttp.readyState == 4 && xhttp.status == 200) {
+					document.getElementById("demo").innerHTML = xhttp.responseText;
+				}
+				};
+			xhttp.open("GET", "https://therrodriguez.github.io/databasingcode/source.src", true);
+			xhttp.send();
 		}
+		loadDoc();
 		</script>
 		
 	</body>
