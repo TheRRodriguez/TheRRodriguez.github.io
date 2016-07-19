@@ -7,12 +7,7 @@
 	 
 	        <script type="text/javascript" src="https://cdn.datatables.net/v/dt/jq-2.2.3/dt-1.10.12/datatables.min.js"></script>
 	        
-	      
-	
-		
-	</head>
-	<body>
-		<script>
+	      	<script>
 			$(document).ready(function() {
 		    		$('#main table').DataTable( {
 		    			"processing": true,
@@ -21,6 +16,11 @@
 		    		} );
 			} );
 		</script>
+	
+		
+	</head>
+	<body>
+		
 		<div id="table">
 			<table id="main table" cellspacing="0" width="100%">
 			        <thead>
@@ -35,5 +35,8 @@
 			        </thead>
 			</table>
 		</div>
+		$(document).ready(function() {
+    			$('#example').DataTable();
+		} );
 	</body>
 </html>
