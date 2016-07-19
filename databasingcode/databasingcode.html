@@ -15,7 +15,9 @@
 		<script>
 			$(document).ready(function() {
 		    		$('#main table').DataTable( {
-		        		"ajax": "databasingcode/src.src"
+		    			"processing": true,
+        				"serverSide": true,
+		        		"ajax": "/databasingcode/src.src"
 		    		} );
 			} );
 		</script>
