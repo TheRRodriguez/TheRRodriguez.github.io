@@ -8,46 +8,64 @@
 	        <script type="text/javascript" src="https://cdn.datatables.net/v/dt/jq-2.2.3/dt-1.10.12/datatables.min.js"></script>
 	        
 	      	<script>
-			$(document).ready(function() {
-		    		$('#main table').DataTable( {
-		    			"processing": true,
-        				"serverSide": true,
-		        		"ajax": "https://therrodriguez.github.io/databasingcode/source.src"
-		    		} );
-			} );
+			$(function () {
+				$("td").dblclick(function () { 
+					var OriginalContent = $(this).text(); 
+					$(this).addClass("cellEditing"); 
+					$(this).html("<input type='text' value='" + OriginalContent + "' />"); 
+					$(this).children().first().focus(); 
+					$(this).children().first().keypress(function (e) { 
+						if (e.which == 13) { 
+							var newContent = $(this).val(); 
+							$(this).parent().text(newContent); 
+							$(this).parent().removeClass("cellEditing"); 
+						} 
+					}); 
+						$(this).children().first().blur(function(){ 
+							$(this).parent().text(OriginalContent); 
+							$(this).parent().removeClass("cellEditing"); 
+						}); 
+				}); 
+			});
+
 		</script>
+		
 	
 		
 	</head>
 	<body>
 		
 		<div id="table">
-			<table id="main table" cellspacing="0" width="100%">
+			<table id="editableTable" cellspacing="0" width="100%">
 			        <thead>
-			            <tr>
-			                <th>Item/Container</th>
-			                <th>Items</th>
-			                <th>Last Checked Out</th>
-			                <th>Last Returned</th>
-			                <th>Checked Out?</th>
-			                <th>Owner</th>
-			            </tr>
+				        <tr>
+					        <th>Item/Container</th>
+					        <th>Items</th>
+					        <th>Last Checked Out</th>
+					        <th>Last Returned</th>
+					        <th>Checked Out?</th>
+					        <th>Owner</th>
+				        </tr>
 			        </thead>
+			        <tbody>
+			         
+			        	
+			        </tbody>
 			</table>
 		</div>
+		<button onclick="myFunction()">Try it</button>
+
 		<script>
-		function loadDoc() {
-			var xhttp = new XMLHttpRequest();
-			xhttp.onreadystatechange = function() {
-				if (xhttp.readyState == 4 && xhttp.status == 200) {
-					document.getElementById("data").innerHTML = xhttp.responseText;
-				}
-			};
-			xhttp.open("GET", "https://therrodriguez.github.io/databasingcode/source.src", true);
-			xhttp.send();
-		}
-		loadDoc();
+			function myFunction() {
+				var table = document.getElementById("editableTable");
+				var row = table.insertRow(0);
+				var cell1 = row.insertCell(0);
+				var cell2 = row.insertCell(1);
+				cell1.innerHTML = "NEW CELL1";
+				cell2.innerHTML = "NEW CELL2";
+			}
 		</script>
 		
 	</body>
 </html>
+
