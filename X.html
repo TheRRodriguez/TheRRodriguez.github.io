@@ -1,3 +1,4 @@
+<!doctype html>
 <html>
 	<head>
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
@@ -9,17 +10,21 @@
 	<body>
 		<table id="example">
 				<thead>
-					<tr><th class="site_name">Name</th><th>Url </th><th>Type</th><th>Last modified</th></tr>
+					<tr>
+						<th>Item/Container</th>
+					    <th>Items</th>
+					    <th>Last Checked Out</th>
+					    <th>Last Returned</th>
+					    <th>Checked Out?</th>
+					    <th>Owner</th>
+					</tr>
 				</thead>
 			<tbody>
 				<script>
 					$("#example").dataTable({
 						"aaData":[
-							["Sitepoint","http://sitepoint.com","Blog","2013-10-15 10:30:00"],
-							["Flippa","http://flippa.com","Marketplace","null"],
-							["99designs","http://99designs.com","Marketplace","null"],
-							["Learnable","http://learnable.com","Online courses","null"],
-							["Rubysource","http://rubysource.com","Blog","2013-01-10 12:00:00"]
+							["Cookbox #1","1 burner","5/21/2016","4/10/16","Yes","John Doe"],
+							["Cookbox #1","2 lighters","5/21/2016","4/10/16","Yes","John Doe"]
 						],
 						"aoColumnDefs":[{
 								"sTitle":"Site name"
@@ -27,17 +32,14 @@
 						},{
 								"aTargets": [ 1 ]
 							, "bSortable": false
-							, "mRender": function ( url, type, full )  {
-								return  '<a href="'+url+'">' + url + '</a>';
-							}
 						},{
 								"aTargets":[ 3 ]
 							, "sType": "date"
-							, "mRender": function(date, type, full) {
+							/*, "mRender": function(date, type, full) {
 								return (full[2] == "Blog") 
 											? new Date(date).toDateString()
 											: "N/A" ;
-							}  
+							}  */
 						}]
 					});
 				</script>
